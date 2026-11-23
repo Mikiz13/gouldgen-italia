@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#102c35">
+<meta name="description" content="Calcolatore genetico gratuito in italiano per il Diamante di Gould: blu, petto bianco, testa arancione, pastello, Avorio e scenari Aqua.">
+<title>GouldGen Italia | Calcolatore genetico del Diamante di Gould</title>
+<style>
+:root{--ink:#16323c;--muted:#60757d;--line:#d9e4e5;--bg:#f5f7f5;--card:#fff;--sea:#087a78;--sea2:#0aaca0;--yellow:#ffe9a6;--warn:#9a5b12;--head:#173740;--shadow:0 12px 36px rgba(13,42,47,.07)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;font-size:16px;line-height:1.5}
+button,select,input{font:inherit}button{cursor:pointer}a{color:#007b75}button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid #17b5a4;outline-offset:3px}
+.container{max-width:1160px;padding:0 22px;margin:0 auto}.topbar{background:#092730;color:#fff;padding:14px 0}.topbar .container{display:flex;justify-content:space-between;align-items:center;gap:12px}.brand{font-size:21px;font-weight:800;letter-spacing:-.04em}.brand span{color:#55ded0}.version{font-size:12px;font-weight:650;border:1px solid #3e6770;border-radius:25px;padding:5px 12px;color:#b5d8d9}
+.hero{background:linear-gradient(117deg,#0c323d 0%,#0d555b 75%,#13796b 100%);color:#fff;padding:55px 0 62px;overflow:hidden}.hero-grid{display:grid;grid-template-columns:1.6fr .8fr;gap:35px;align-items:center}.kicker{font-size:12px;font-weight:900;letter-spacing:.17em;text-transform:uppercase;color:#9ce7dc}.hero h1{font-size:clamp(33px,4.6vw,58px);max-width:820px;line-height:1.09;letter-spacing:-.055em;margin:15px 0 16px}.hero p{max-width:650px;color:#d6efea;font-size:18px;margin:0 0 24px}.hero-links{display:flex;gap:12px;flex-wrap:wrap}.main-btn,.soft-btn,.outline-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:10px;padding:12px 17px;font-weight:750;text-decoration:none}.main-btn{background:#fff;color:#0a5554}.soft-btn{background:#d8f7ed;color:#0f625c}.outline-btn{background:transparent;color:#fff;border:1px solid #86cfc6}.hero-art{position:relative;min-height:250px;display:grid;place-items:center}.bird-disc{width:230px;height:230px;border-radius:50%;background:linear-gradient(140deg,#74d8d4,#227c90);border:13px solid #ffffff24;box-shadow:0 15px 35px #06272b66;display:grid;place-items:center;transform:rotate(-9deg);position:relative}.bird-disc::before{content:' ';width:70px;height:70px;position:absolute;right:-15px;top:15px;border-radius:50%;background:#ffe2a1;opacity:.9}.bird{font-size:125px;filter:drop-shadow(0 13px 6px #10423d4f);position:relative}.caption-art{position:absolute;bottom:0;right:0;color:#c0f5ef;font-size:11px}
+.content{margin-top:-30px;position:relative;padding-bottom:55px}.notice{background:#fff8e8;border:1px solid #f0d29a;border-left:5px solid #b77821;border-radius:12px;padding:16px 18px;box-shadow:var(--shadow);font-size:14px}.notice strong{color:#81500c}.intro-cards{margin:20px 0 26px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.intro-item{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow)}.intro-item b{display:block;font-size:14px}.intro-item small{color:var(--muted);font-size:12px}.section-label{margin:34px 0 15px;display:flex;align-items:flex-end;justify-content:space-between;gap:12px}.section-label h2{font-size:26px;line-height:1.2;letter-spacing:-.035em;margin:0}.section-label p{margin:3px 0 0;color:var(--muted);font-size:14px}.section-pill{font-size:12px;border:1px solid #a6d9d4;color:#00665f;padding:5px 10px;border-radius:25px;background:#e5f6f3;white-space:nowrap}
+.panel{background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:16px;padding:24px}.name-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px}.name-row label{font-weight:700;font-size:13px;color:#31515a}.name-row input{display:block;margin-top:7px;width:100%;min-width:0;border:1px solid #cbdadc;border-radius:9px;padding:11px 13px;background:#fafcfb;color:var(--ink)}
+.zones{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.zone{border:1px solid #dce6e7;border-radius:13px;padding:16px;background:#fbfdfc}.zone-header{display:flex;align-items:center;gap:10px;padding-bottom:12px;border-bottom:1px solid #e3eaea;margin-bottom:15px}.zone-icon{width:40px;height:40px;display:grid;place-items:center;background:#eaf3f1;border-radius:9px;font-size:20px}.zone h3{margin:0;font-size:19px}.zone p{font-size:12px;margin:0;color:var(--muted)}.feature+.feature{margin-top:16px}.feature-title{display:flex;justify-content:space-between;align-items:center;gap:6px;font-size:14px;font-weight:800;margin:0 0 9px}.info{border:1px solid #d5e4e4;color:#43716c;background:#edf8f5;border-radius:50%;height:23px;width:23px;font-size:12px;line-height:19px}.pair-fields{display:grid;grid-template-columns:1fr;gap:8px}.field{display:block;min-width:0}.mini-label{display:block;font-weight:700;color:#506b72;font-size:12px;margin-bottom:5px}.field select,.mode-select{display:block;width:100%;padding:11px 10px;border:1px solid #c7dadd;border-radius:9px;background:#fff;color:var(--ink);font-size:13px;min-height:45px}.field select:focus{border-color:#168e84}
+.examples{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:20px;border-top:1px solid var(--line);padding-top:17px}.examples .prompt{font-size:13px;font-weight:800;margin-right:6px}.example{border:1px solid #b9d6d5;background:#eff9f7;color:#17665f;border-radius:9px;padding:9px 12px;font-size:13px;font-weight:750}.example:hover{background:#d9f2eb}.advanced{margin-top:16px}.advanced summary{cursor:pointer;background:#edf5f3;border:1px solid #cfe4df;border-radius:12px;padding:17px 18px;font-size:15px;font-weight:800;color:#154d4d;list-style-position:inside}.advanced[open] summary{border-radius:12px 12px 0 0}.adv-inner{padding:20px;border:1px solid #cfe4df;border-top:0;border-radius:0 0 12px 12px;background:#fff}.adv-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.adv-grid .feature{border:1px solid var(--line);border-radius:10px;padding:14px;margin:0}.adv-grid .pair-fields{grid-template-columns:1fr 1fr}.aqua-settings{margin-top:22px;padding:20px;border-radius:12px;background:#eef8f7;border:1px solid #c2e4df}.aqua-settings h3{margin:0 0 6px}.aqua-settings p{margin:0 0 13px;color:#456d72;font-size:13px}.aqua-flex{display:grid;grid-template-columns:1fr 2fr;gap:16px;align-items:start}.aqua-holder .pair-fields{grid-template-columns:1fr 1fr}.aqua-caveat{padding:10px;background:#fff6e6;color:#835017;font-weight:650;font-size:13px;border-radius:9px;margin-top:12px}.aqua-caveat[hidden],#aquaAutoFields[hidden],#aquaSexFields[hidden]{display:none}
+.action-row{display:flex;flex-wrap:wrap;gap:9px;padding-top:24px}.primary{border:0;background:#087b75;color:white;border-radius:9px;padding:12px 16px;font-size:14px;font-weight:750}.primary:hover{background:#086961}.secondary{border:1px solid #bcd2d2;background:white;color:#264d55;border-radius:9px;padding:11px 15px;font-size:14px;font-weight:750}.secondary:hover{background:#edf7f5}.reset{margin-left:auto}.goal{background:linear-gradient(115deg,#e8f6f1,#f4fbf8);border:1px solid #c6e5db;border-radius:14px;padding:21px;display:flex;gap:17px;margin-bottom:22px}.goal-icon{font-size:33px}.goal h3{font-size:21px;margin:0 0 7px}.goal p{margin:0;color:#385f60;font-size:14px}.goal-numbers{margin-top:14px;display:flex;gap:13px;flex-wrap:wrap}.goal-numbers span{padding:9px 13px;background:#fff;border:1px solid #d7e7e5;border-radius:10px;font-size:13px}.goal-numbers b{font-size:19px;color:#006760;margin-right:4px}
+.combined{display:grid;grid-template-columns:1fr 1fr;gap:16px}.comb-table{border:1px solid #d9e5e3;border-radius:13px;background:#fff;overflow:hidden}.comb-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:15px 17px;background:#eaf6f3}.comb-head h3{font-size:17px;margin:0}.comb-head span{font-size:11px;color:#557473}.comb-table table{border-collapse:collapse;width:100%;font-size:13px}.comb-table thead{color:#65797d;background:#f8faf9}.comb-table th{font-size:11px;text-transform:uppercase;letter-spacing:.04em;text-align:left}.comb-table th,.comb-table td{padding:10px 12px;border-bottom:1px solid #e9f0ee;vertical-align:top}.comb-table th:last-child,.comb-table td:last-child{text-align:right}.comb-table td.number{color:#92a6a8;font-weight:750}.comb-table .num{white-space:nowrap;color:#087e73;font-weight:850;font-size:14px}.inline-link{display:block;padding:11px 16px;border:0;background:#fff;color:#007c75;text-align:left;text-decoration:underline;font-size:13px;font-weight:750}
+.result-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.result-card{border:1px solid var(--line);border-radius:13px;background:#fff;overflow:hidden}.result-top{padding:14px 16px;background:#f7faf9;display:flex;align-items:center;justify-content:space-between;gap:8px;border-bottom:1px solid #e7eeeb}.result-top h3{font-size:16px;margin:0}.precision{font-size:11px;color:#77908d}.mini-results{padding:14px 16px;display:grid;grid-template-columns:1fr 1fr;gap:18px}.mini-results h4{font-size:12px;margin:0 0 10px;color:#557276}.out-row{margin:0 0 13px}.out-line{display:flex;justify-content:space-between;gap:8px;align-items:flex-start;font-size:13px}.out-line strong{white-space:nowrap;font-size:14px;color:#087e73}.out-label{font-weight:650}.gene,.carrier{display:block;color:#87969a;font-size:11px;line-height:1.4}.carrier{color:#855e15}.track{height:5px;background:#e9f2ef;border-radius:10px;overflow:hidden;margin-top:5px}.track span{display:block;background:#15a99a;height:100%;border-radius:10px}.genotypes{border-top:1px solid var(--line)}.genotypes summary{font-size:12px;color:#087970;padding:12px 16px;cursor:pointer;font-weight:750}.genotypes[open] summary{background:#f3f9f6}.genotypes .mini-results{border-top:1px solid var(--line)}
+.warning-box{border:1px solid #e9d3ab;background:#fffaf0;border-radius:13px;padding:18px 23px}.warning-box h3{margin:0 0 9px;font-size:18px}.warning-box ul{margin:0;padding-left:20px;font-size:13px;color:#77572b}.warning-box li+li{margin-top:7px}.saved-area{border:1px solid var(--line);background:#fff;border-radius:14px;padding:20px}.saved-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:12px 0;border-top:1px solid #e6edeb;font-size:13px}.saved-row span{flex:1}.small-btn{padding:7px 10px;font-size:12px;font-weight:700;border:1px solid #b5d0ce;color:#08776d;background:#f2faf8;border-radius:8px}.small-btn.danger{color:#a33f2e;background:#fff7f3;border-color:#edd2c8}.export-line{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}.footer{background:#112e35;color:#c5dadc;padding:34px 0 42px;font-size:13px}.footer a{color:#9adfd4}.footer p{max-width:820px}.footer .sources{display:flex;gap:12px;flex-wrap:wrap}.toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,25px);opacity:0;pointer-events:none;background:#123b3e;color:white;padding:12px 18px;max-width:calc(100vw - 30px);border-radius:10px;box-shadow:0 14px 30px #102c3480;transition:.2s;z-index:3;text-align:center;font-size:14px}.toast.visible{opacity:1;transform:translate(-50%,0)}
+@media(max-width:950px){.zones{grid-template-columns:1fr 1fr}.zones .zone:last-child{grid-column:1/-1}.hero-grid{grid-template-columns:1fr .4fr}.bird-disc{width:160px;height:160px}.bird{font-size:85px}}
+@media(max-width:690px){.container{padding:0 14px}.hero{padding:32px 0 58px}.hero-grid{grid-template-columns:1fr}.hero-art{display:none}.hero h1{font-size:38px}.hero p{font-size:16px}.content{margin-top:-27px}.intro-cards,.zones,.name-row,.combined,.result-grid,.adv-grid{grid-template-columns:1fr}.zones .zone:last-child{grid-column:auto}.intro-cards{gap:8px}.intro-item{padding:13px}.panel{padding:14px}.zone{padding:14px}.adv-inner{padding:13px}.adv-grid .pair-fields,.aqua-holder .pair-fields,.aqua-flex{grid-template-columns:1fr}.mini-results{grid-template-columns:1fr;gap:5px}.section-label h2{font-size:22px}.section-pill{display:none}.action-row button{flex:1 1 auto}.reset{margin-left:0}.topbar{padding:12px 0}.brand{font-size:18px}.version{font-size:10px}.feature-title{font-size:15px}.field select{font-size:15px}}
+@media print{.topbar,.hero,.notice,.intro-cards,.section-label:first-of-type,.input-panel,.examples,.advanced,.action-row,.saved-area,.saved-section,.footer,.toast,.genotypes summary,.inline-link{display:none!important}.content{margin:0}.panel{box-shadow:none;border:0;padding:0}.combined,.result-grid{display:block}.comb-table,.result-card,.goal,.warning-box{break-inside:avoid;page-break-inside:avoid;margin:12px 0}.comb-table{margin:15px 0}.result-card{margin:14px 0}.genotypes{display:none}.section-label{margin:10px 0}body{background:white;color:black}.container{max-width:none}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="container"><div class="brand">Gould<span>Gen</span> <small style="font-weight:400;opacity:.75;font-size:13px">Italia</small></div><span class="version">VERSIONE 1.0 · GRATUITO</span></div></header>
+<section class="hero"><div class="container hero-grid"><div><div class="kicker">Fatto per gli allevatori di Diamante di Gould</div><h1>Quali piccoli nasceranno dalla tua coppia?</h1><p>Scegli le caratteristiche del maschio e della femmina. Scopri i possibili colori, i portatori e le probabilità genetiche — tutto in italiano.</p><div class="hero-links"><a class="main-btn" href="#calcolatore">🧮 Inizia il calcolo</a><a class="outline-btn" href="#risultati">Vedi i risultati</a></div></div><div class="hero-art" aria-hidden="true"><div class="bird-disc"><span class="bird">🐦</span></div><small class="caption-art">Grafica illustrativa, non una mutazione reale</small></div></div></section>
+<main class="container content">
+ <aside class="notice"><strong>Prima regola: un colore visibile non svela sempre il genotipo.</strong> Le percentuali sono esatte <em>solo per il modello e per i genitori indicati</em>. Se non conosci i portatori, non assumere automaticamente che non ci siano: controlla il quaderno genealogico.</aside>
+ <div class="intro-cards"><div class="intro-item"><b>🧬 Geni, non supposizioni</b><small>Modelli pubblicati, con genetica e portatori distinti.</small></div><div class="intro-item"><b>⚖️ Maschi e femmine separati</b><small>Calcoli corretti per i fattori legati al sesso.</small></div><div class="intro-item"><b>🌊 Aqua &amp; Turquoise</b><small>Scenario sperimentale quando la genetica è incerta.</small></div></div>
+ <section id="calcolatore" class="input-panel"><div class="section-label"><div><h2>1. Scegli la coppia</h2><p>Parti dalle tre caratteristiche principali.</p></div><span class="section-pill">Modifica i campi: il calcolo si aggiorna subito</span></div>
+  <div class="panel"><div class="name-row"><label>Nome o anello del MASCHIO<input id="maleName" maxlength="75" placeholder="Es. M 26/104" autocomplete="off"></label><label>Nome o anello della FEMMINA<input id="femaleName" maxlength="75" placeholder="Es. F 25/017" autocomplete="off"></label></div>
+   <div id="basicFields" class="zones"></div>
+   <div class="examples"><span class="prompt">Prova un esempio:</span><button class="example" data-preset="blue">💙 Due portatori Blu</button><button class="example" data-preset="ivory">🌿 Portatore Avorio</button><button class="example" data-preset="aqua">🌊 Due portatori Aqua</button><button class="example" data-preset="pastel">🟡 Pastello e testa nera</button></div>
+  </div>
+  <details id="advanced" class="advanced"><summary>➕ Mutazioni avanzate: Pastello, Avorio, Ino, Cinnamon, Aqua…</summary><div class="adv-inner"><p style="font-size:14px;color:#49646b;margin-top:0">Usa queste voci solo se sai che la mutazione è presente nella linea. <strong>SF</strong> = singolo fattore; <strong>DF</strong> = doppio fattore; <strong>portatore</strong> = gene presente ma non visibile.</p><div id="advancedFields" class="adv-grid"></div>
+    <div class="aqua-settings"><h3>🌊 Aqua / Verde-mare / "Turchese"</h3><p>Non tutte le linee sono identiche. Il vero <strong>Turquoise</strong> delle foto portoghesi non ha un modello genetico dimostrato. Scegli soltanto l'ipotesi della tua linea documentata.</p><div class="aqua-flex"><label class="field"><span class="mini-label">Modello utilizzato</span><select id="aquaMode" class="mode-select"><option value="off">Non calcolare</option><option value="auto">Aqua autosomico recessivo (ipotesi)</option><option value="sex">Aqua recessivo legato al sesso (ipotesi)</option></select></label><div class="aqua-holder"><div id="aquaAutoFields"></div><div id="aquaSexFields"></div></div></div><div id="aquaCaveat" class="aqua-caveat" hidden>⚠️ Percentuali teoriche per un modello dichiarato: non sono un test genetico e non dimostrano la nascita del Turquoise portoghese.</div></div>
+    </div></details>
+  <div class="action-row"><button class="primary" id="savePair">💾 Salva questa coppia</button><button class="secondary" id="printResult">🖨️ Stampa risultato / PDF</button><button class="secondary" id="sharePair">🔗 Copia link coppia</button><button class="secondary reset" id="resetAll">↺ Ricomincia</button></div>
+ </section>
+ <section id="risultati"><div class="section-label"><div><h2>2. Risultato dell'accoppiamento</h2><p id="summaryMeta"></p></div><span class="section-pill">♂ <span id="displayMale">Maschio</span> × ♀ <span id="displayFemale">Femmina</span></span></div>
+  <div id="goalContainer"></div>
+  <div class="section-label"><div><h2>Combinazioni dei piccoli</h2><p>Testa + petto + dorso verde/blu. Percentuali <strong>all'interno di ciascun sesso</strong>. Tonalità modificate da Pastello/Ino non incluse qui.</p></div></div>
+  <div id="combinedResults" class="combined"></div>
+  <div class="section-label"><div><h2>3. Dettaglio genetico</h2><p>Apri “Vedi genotipi e portatori” per distinguere i piccoli visivamente uguali.</p></div></div>
+  <div id="coreResults" class="result-grid"></div>
+  <details class="advanced" style="margin-top:16px"><summary>🔍 Altri risultati: Ino, Cinnamon, Diluito, eventuale Aqua</summary><div id="extraResults" class="result-grid" style="padding:15px;border:1px solid #cfe4df;border-top:0;border-radius:0 0 12px 12px"></div></details>
+  <div class="section-label"><div><h2>Cosa bisogna sapere</h2></div></div>
+  <div class="warning-box"><h3>⚠️ Limiti e precauzioni del calcolo</h3><ul id="warnings"></ul></div>
+ </section>
+ <section class="saved-section"><div class="section-label"><div><h2>4. Le coppie salvate</h2><p>Le schede rimangono nel browser di questo dispositivo. Esporta una copia per non perderle.</p></div></div><div class="saved-area"><div id="savedList"></div><div class="export-line"><button class="secondary" id="exportSaved">⬇️ Esporta coppie (JSON)</button><label class="secondary" style="cursor:pointer">⬆️ Importa coppie<input id="importFile" type="file" accept="application/json,.json" style="display:none"></label></div></div></section>
+</main>
+<footer class="footer"><div class="container"><strong style="font-size:19px;color:#fff">GouldGen Italia</strong><p>Calcolatore gratuito ed eseguibile anche offline. Rispetta l'integrità genetica e il benessere dei riproduttori. I risultati sono teorici; non prevedono fertilità, sopravvivenza, mutazioni spontanee, interazione fra tutti i fattori o la sfumatura esatta del piumaggio.</p><div class="sources"><a href="https://www.nbvv.nl/wp-content/uploads/gouldamadine-2017-2024.pdf" target="_blank" rel="noopener">Standard NBvV (2024)</a><a href="https://www.foi.it/download.html?e=pdf&amp;n=Diamante_di_Gould_scheda" target="_blank" rel="noopener">Standard FOI</a><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6191701/" target="_blank" rel="noopener">Ricerca sulla testa</a></div><p><small>Versione 1.0 · Motore di calcolo indipendente · Codice MIT · Nessun dato inviato a server. <strong>Non è uno strumento diagnostico genetico.</strong></small></p></div></footer>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script>
+/* GouldGen Italia — motore genetico trasparente v1.0
+ * Solo modelli mendeliani dichiarati. Nessuna probabilita' inventata per Turquoise.
+ * NBvV 2017-2024 (ed. 2025-2029); bibliografia nel README.
+ * MIT License.
+ */
+(function(root,factory){
+  const api=factory();
+  if(typeof module==='object'&&module.exports)module.exports=api;
+  root.GouldEngine=api;
+})(typeof globalThis!=='undefined'?globalThis:this,function(){
+  'use strict';
+  const DEFAULTS={
+    male:{head:'RR',orange:'OO',breast:'PP',blue:'BB',pastel:'NN',ivory:'NN',cinnamon:'NN',ino:'NN',dilute:'DD',aquaAuto:'AA',aquaSex:'NN'},
+    female:{head:'R',orange:'OO',breast:'PP',blue:'BB',pastel:'N',ivory:'N',cinnamon:'N',ino:'N',dilute:'DD',aquaAuto:'AA',aquaSex:'N'},
+    aquaMode:'off'
+  };
+  function deepCopy(o){return JSON.parse(JSON.stringify(o));}
+  function normalize(a,b,order){return [a,b].sort((x,y)=>order.indexOf(x)-order.indexOf(y)).join('');}
+  function dipCross(a,b,order){
+    if(a.length!==2||b.length!==2)throw new Error('Genotipo autosomico non valido');
+    const map=new Map();
+    for(const x of a)for(const y of b){const genotype=normalize(x,y,order);map.set(genotype,(map.get(genotype)||0)+0.25);}
+    return [...map].map(([genotype,p])=>({genotype,p}));
+  }
+  function sexCross(male,female,order){
+    if(male.length!==2||female.length!==1)throw new Error('Genotipo legato al sesso non valido');
+    const m=new Map(),f=new Map();
+    for(const allele of male){
+      const key=normalize(allele,female,order);m.set(key,(m.get(key)||0)+0.5);
+      f.set(allele,(f.get(allele)||0)+0.5);
+    }
+    return {male:[...m].map(([genotype,p])=>({genotype,p})),female:[...f].map(([genotype,p])=>({genotype,p}))};
+  }
+  function headKind(z,orange){
+    if(!z.includes('R'))return orange==='oo'?'Testa nera · becco giallo':'Testa nera';
+    return orange==='oo'?'Testa arancione':'Testa rossa';
+  }
+  function breastKind(g){return g.includes('P')?'Petto viola':g.includes('L')?'Petto lilla':'Petto bianco';}
+  function bodyKind(g){return g==='bb'?'Dorso blu':'Dorso verde';}
+  function makeAllelicResult(id,title,genotypes,kind,extra){
+    return {id,title,male:genotypes.map(item=>({...item,label:kind(item.genotype,'male'),note:extra?extra(item.genotype,'male'):''})),female:genotypes.map(item=>({...item,label:kind(item.genotype,'female'),note:extra?extra(item.genotype,'female'):''}))};
+  }
+  function annotated(cross,phen,male,female){
+    return {male:cross.male.map(o=>({...o,label:phen(o.genotype,'male'),note:male?male(o.genotype):''})),female:cross.female.map(o=>({...o,label:phen(o.genotype,'female'),note:female?female(o.genotype):''}))};
+  }
+  function mergeVisible(items){
+    const m=new Map();
+    for(const item of items)m.set(item.label,(m.get(item.label)||0)+item.p);
+    return [...m].map(([label,p])=>({label,p})).sort((a,b)=>b.p-a.p||a.label.localeCompare(b.label,'it'));
+  }
+  function headCross(state){
+    const z=sexCross(state.male.head,state.female.head,['R','b']);
+    const orange=dipCross(state.male.orange,state.female.orange,['O','o']);
+    const out={male:[],female:[]};
+    for(const sex of ['male','female'])for(const zz of z[sex])for(const oo of orange){
+      const label=headKind(zz.genotype,oo.genotype);
+      const note=[zz.genotype.includes('R')&&zz.genotype.includes('b')?'porta testa nera':null,oo.genotype==='Oo'?'porta fattore arancione':null].filter(Boolean).join('; ');
+      out[sex].push({genotype:`Z:${zz.genotype} · O:${oo.genotype}`,label,note,p:zz.p*oo.p});
+    }
+    return out;
+  }
+  function normalSexResult(state,id,title,order,phen,annot){
+    const v=sexCross(state.male[id],state.female[id],order);
+    return {id,title,...annotated(v,phen,g=>annot?annot(g,'male'):'',g=>annot?annot(g,'female'):'')};
+  }
+  function normalAutoResult(state,id,title,order,phen,annot){
+    const v=dipCross(state.male[id],state.female[id],order).map(o=>({...o,label:phen(o.genotype),note:annot?annot(o.genotype):''}));
+    return {id,title,male:v,female:v};
+  }
+  function calc(state){
+    const s=state||DEFAULTS;
+    const head=headCross(s);
+    const breast=normalAutoResult(s,'breast','Petto',['P','L','W'],breastKind,g=>g==='PW'?'porta petto bianco':g==='PL'?'porta petto lilla':g==='LW'?'porta petto bianco':'');
+    const blue=normalAutoResult(s,'blue','Dorso · serie verde/blu',['B','b'],bodyKind,g=>g==='Bb'?'porta blu':'');
+    const pastel=normalSexResult(s,'pastel','Pastello · giallo / argento',['N','p'],(g,sex)=>{
+      const n=[...g].filter(x=>x==='p').length;
+      if(sex==='female')return n?'Pastello femmina':'Non pastello';
+      return n===0?'Non pastello':n===1?'Pastello SF (maschio)':'Pastello DF (maschio)';
+    });
+    const ivory=normalSexResult(s,'ivory','Avorio (SL)',['N','i'],(g,sex)=>{
+      const n=[...g].filter(x=>x==='i').length;
+      return sex==='female'?(n?'Avorio femmina':'Non Avorio'):(n===2?'Avorio maschio':'Non Avorio');
+    },(g,sex)=>sex==='male'&&g==='Ni'?'portatore Avorio':'');
+    const cinnamon=normalSexResult(s,'cinnamon','Cinnamon (SL)',['N','c'],(g,sex)=>{
+      const n=[...g].filter(x=>x==='c').length;
+      return sex==='female'?(n?'Cinnamon femmina':'Non Cinnamon'):(n===2?'Cinnamon maschio':'Non Cinnamon');
+    },(g,sex)=>sex==='male'&&g==='Nc'?'portatore Cinnamon':'');
+    const ino=normalSexResult(s,'ino','Lutino / Ino (SL)',['N','l'],(g,sex)=>{
+      const n=[...g].filter(x=>x==='l').length;
+      return sex==='female'?(n?'Ino femmina':'Non Ino'):(n===2?'Ino maschio':'Non Ino');
+    },(g,sex)=>sex==='male'&&g==='Nl'?'portatore Ino':'');
+    const dilute=normalAutoResult(s,'dilute','Diluito australiano (recessivo)',['D','d'],g=>g==='dd'?'Diluito australiano':'Non Diluito',g=>g==='Dd'?'portatore Diluito':'');
+    let aqua=null;
+    if(s.aquaMode==='auto')aqua=normalAutoResult(s,'aquaAuto','Aqua · ipotesi autosomica recessiva',['A','a'],g=>g==='aa'?'Aqua (ipotesi)':'Non Aqua',g=>g==='Aa'?'portatore ipotetico':'');
+    if(s.aquaMode==='sex')aqua=normalSexResult(s,'aquaSex','Aqua · ipotesi legata al sesso',['N','a'],(g,sex)=>{
+      const n=[...g].filter(x=>x==='a').length;
+      return sex==='female'?(n?'Aqua femmina (ipotesi)':'Non Aqua'):(n===2?'Aqua maschio (ipotesi)':'Non Aqua');
+    },(g,sex)=>sex==='male'&&g==='Na'?'portatore ipotetico':'');
+    const joint={male:[],female:[]};
+    for(const sex of ['male','female']){
+      const m=new Map();
+      for(const h of head[sex])for(const b of breast[sex])for(const d of blue[sex]){
+        const label=`${h.label} · ${b.label} · ${d.label}`;
+        m.set(label,(m.get(label)||0)+h.p*b.p*d.p);
+      }
+      joint[sex]=[...m].map(([label,p])=>({label,p})).sort((x,y)=>y.p-x.p||x.label.localeCompare(y.label,'it'));
+    }
+    const modules=[{id:'head',title:'Colore genetico della testa',...head},breast,blue,pastel,ivory,cinnamon,ino,dilute];
+    if(aqua)modules.push(aqua);
+    for(const m of modules){m.summary={male:mergeVisible(m.male),female:mergeVisible(m.female)};}
+    const checks=[];
+    if(s.aquaMode!=='off')checks.push('La forma Aqua va confermata nella genealogia: il modello scelto è un’ipotesi e NON identifica il Turquoise portoghese.');
+    if(s.aquaMode==='auto'&&(s.male.blue!=='BB'||s.female.blue!=='BB'))checks.push('Aqua autosomico e Blu potrebbero appartenere alla stessa serie allelica: NON moltiplicare le probabilità Aqua e Blu.');
+    if(s.male.pastel!=='NN'||s.female.pastel!=='N')checks.push('Testa rossa/nera e Pastello sono entrambi sul cromosoma Z: le percentuali congiunte richiedono la fase cromosomica e il tasso di ricombinazione.');
+    if(s.male.ivory!=='NN'||s.female.ivory!=='N'||s.male.cinnamon!=='NN'||s.female.cinnamon!=='N'||s.male.ino!=='NN'||s.female.ino!=='N'||s.aquaMode==='sex')checks.push('Più fattori legati al sesso non vengono moltiplicati tra loro: potrebbero essere associati sullo stesso cromosoma Z.');
+    if(s.male.blue==='bb'||s.female.blue==='bb')checks.push('Il fattore Blu può schiarire la testa rossa/arancione: il risultato testa indica il GENOTIPO cromatico, non una promessa sulla tonalità visibile.');
+    checks.push('I risultati sono probabilità per singolo nato; non garantiscono il numero di piccoli in una covata. Presuppongono genotipi verificati e un rapporto sessi teorico 50/50.');
+    return {modules,joint,checks,aquaMode:s.aquaMode};
+  }
+  function pct(n){const v=Math.round((n*100+Number.EPSILON)*100)/100;return Number.isInteger(v)?String(v):String(v).replace('.',',');}
+  function sum(items){return items.reduce((a,b)=>a+b.p,0);}
+  return {DEFAULTS,deepCopy,dipCross,sexCross,headCross,breastKind,bodyKind,calc,pct,sum};
+});
+
+</script>
+<script>
+/* GouldGen Italia - UI standalone, nessuna dipendenza esterna. */
+(function(){
+'use strict';
+const E=window.GouldEngine;
+const STORAGE='gouldgen-coppie-v1';
+const fieldDefs={
+ head:{title:'Testa: rosso / nero',hint:'Gene sul cromosoma Z. Per l’arancione serve anche il fattore sotto.',male:[['RR','Rossa (non porta nera)'],['Rb','Rossa (porta nera)'],['bb','Nera']],female:[['R','Rossa'],['b','Nera']]},
+ orange:{title:'Fattore testa arancione',hint:'Recessivo. Con due copie e base rossa, la testa è arancione; con base nera resta nera, a becco giallo.',both:[['OO','Non portatore (ipotizzato)'],['Oo','Portatore di arancione'],['oo','Doppio fattore arancione']]},
+ breast:{title:'Colore del petto',hint:'Viola domina lilla, che domina bianco. Seleziona anche gli eventuali portatori.',both:[['PP','Viola puro'],['PL','Viola / porta lilla'],['PW','Viola / porta bianco'],['LL','Lilla puro'],['LW','Lilla / porta bianco'],['WW','Bianco puro']]},
+ blue:{title:'Dorso: verde / blu',hint:'Blu autosomico recessivo. Un verde può esserne portatore.',both:[['BB','Verde NON portatore (ipotizzato)'],['Bb','Verde / porta blu'],['bb','Blu']]},
+ pastel:{title:'Pastello europeo / giallo',hint:'Sul cromosoma Z; maschio può essere SF o DF, femmina ha un unico fattore.',male:[['NN','Non pastello'],['Np','Pastello SF (singolo fattore)'],['pp','Pastello DF (doppio fattore)']],female:[['N','Non pastello'],['p','Pastello femmina']]},
+ ivory:{title:'Avorio (recessivo legato al sesso)',hint:'Solo il maschio normale può essere portatore. Non è sinonimo di Aqua/Turquoise.',male:[['NN','Non Avorio (presunto)'],['Ni','Maschio portatore Avorio'],['ii','Maschio Avorio']],female:[['N','Non Avorio'],['i','Femmina Avorio']]},
+ cinnamon:{title:'Cinnamon (recessivo legato al sesso)',hint:'Mantello bruno. Un maschio può essere portatore senza esprimerlo.',male:[['NN','Non Cinnamon'],['Nc','Maschio portatore Cinnamon'],['cc','Maschio Cinnamon']],female:[['N','Non Cinnamon'],['c','Femmina Cinnamon']]},
+ ino:{title:'Ino / Lutino (recessivo legato al sesso)',hint:'Mutazione diversa da pastello DF e dal petto bianco; il colore degli occhi aiuta.',male:[['NN','Non Ino'],['Nl','Maschio portatore Ino'],['ll','Maschio Ino']],female:[['N','Non Ino'],['l','Femmina Ino']]},
+ dilute:{title:'Diluito australiano (recessivo)',hint:'Non confondere il diluito australiano con il pastello europeo.',both:[['DD','Non diluito'],['Dd','Portatore diluito'],['dd','Diluito']]},
+ aquaAuto:{title:'Aqua — modello autosomico recessivo',hint:'Solo se la linea Aqua è documentata come autosomica recessiva.',both:[['AA','Non Aqua (presunto)'],['Aa','Portatore Aqua (documentato)'],['aa','Aqua visibile']]},
+ aquaSex:{title:'Aqua — modello recessivo legato al sesso',hint:'Solo se la linea Aqua è documentata come legata al sesso.',male:[['NN','Non Aqua'],['Na','Maschio portatore Aqua'],['aa','Maschio Aqua']],female:[['N','Non Aqua'],['a','Femmina Aqua']]}
+};
+const sections=[
+ {title:'Testa',icon:'🔴',desc:'Rosso, nero e fattore arancione',fields:['head','orange']},
+ {title:'Petto',icon:'🟣',desc:'Viola, lilla, bianco',fields:['breast']},
+ {title:'Dorso',icon:'🔵',desc:'Verde, blu e portatori',fields:['blue']}
+];
+let state=E.deepCopy(E.DEFAULTS);
+let showAll={male:false,female:false};
+const $=id=>document.getElementById(id);
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function pretty(p){return E.pct(p)+'%';}
+function field(id){
+ const def=fieldDefs[id];let html=`<div class="feature"><div class="feature-title">${esc(def.title)}<button type="button" class="info" data-hint="${esc(def.hint)}" title="Spiegazione ${esc(def.title)}" aria-label="Spiegazione ${esc(def.title)}">?</button></div><div class="pair-fields">`;
+ for(const sex of ['male','female']){
+  let opts=def[sex]||def.both;
+  html+=`<label class="field"><span class="mini-label">${sex==='male'?'♂ Maschio':'♀ Femmina'}</span><select data-sex="${sex}" data-field="${id}" aria-label="${esc(def.title)} ${sex==='male'?'maschio':'femmina'}">`;
+  for(const [v,label] of opts)html+=`<option value="${v}"${state[sex][id]===v?' selected':''}>${esc(label)}</option>`;
+  html+='</select></label>';
+ }
+ return html+'</div></div>';
+}
+function buildForm(){
+ $('basicFields').innerHTML=sections.map(s=>`<div class="zone"><div class="zone-header"><span class="zone-icon">${s.icon}</span><div><h3>${s.title}</h3><p>${s.desc}</p></div></div>${s.fields.map(field).join('')}</div>`).join('');
+ $('advancedFields').innerHTML=['pastel','ivory','cinnamon','ino','dilute'].map(field).join('');
+ $('aquaAutoFields').innerHTML=field('aquaAuto');
+ $('aquaSexFields').innerHTML=field('aquaSex');
+ $('aquaMode').value=state.aquaMode;
+ toggleAqua();
+}
+function toggleAqua(){
+ $('aquaAutoFields').hidden=state.aquaMode!=='auto';
+ $('aquaSexFields').hidden=state.aquaMode!=='sex';
+ $('aquaCaveat').hidden=state.aquaMode==='off';
+}
+function rows(items,showGen){
+ return items.map(o=>`<div class="out-row"><div class="out-line"><div><span class="out-label">${esc(o.label)}</span>${showGen?`<small class="gene">${esc(o.genotype)}</small>`:''}${o.note?`<small class="carrier">${esc(o.note)}</small>`:''}</div><strong>${pretty(o.p)}</strong></div><div class="track"><span style="width:${Math.max(0,Math.min(100,o.p*100))}%"></span></div></div>`).join('');
+}
+function summaryModule(mod){
+ return `<article class="result-card"><div class="result-top"><h3>${esc(mod.title)}</h3><span class="precision">per sesso</span></div><div class="mini-results"><section><h4>♂ Figli maschi</h4>${rows(mod.summary.male,false)}</section><section><h4>♀ Figlie femmine</h4>${rows(mod.summary.female,false)}</section></div><details class="genotypes"><summary>Vedi genotipi e portatori</summary><div class="mini-results"><section><h4>Maschi · dettaglio genetico</h4>${rows(mod.male,true)}</section><section><h4>Femmine · dettaglio genetico</h4>${rows(mod.female,true)}</section></div></details></article>`;
+}
+function goalCard(res){
+ if(res.aquaMode==='off')return `<div class="goal" role="note"><div class="goal-icon">🧬</div><div><h3>Obiettivo: Gould turchese</h3><p>Non è possibile calcolare la nascita del vero Turquoise dalle comuni mutazioni. Scegli nella sezione avanzata un <strong>modello Aqua documentato</strong> soltanto se conosci la genealogia della linea.</p></div></div>`;
+ const mod=res.modules.find(x=>x.id.startsWith('aqua'));
+ const male=mod.summary.male.find(x=>x.label.includes('Aqua (ipotesi)')||x.label.includes('Aqua maschio'))?.p||0;
+ const female=mod.summary.female.find(x=>x.label.includes('Aqua (ipotesi)')||x.label.includes('Aqua femmina'))?.p||0;
+ return `<div class="goal"><div class="goal-icon">🌊</div><div><h3>Obiettivo Aqua · scenario ipotetico</h3><p>Queste probabilità valgono <strong>esclusivamente</strong> se i riproduttori possiedono il fattore Aqua indicato e la linea segue il modello selezionato. Non predicono il Turquoise portoghese.</p><div class="goal-numbers"><span><b>${pretty(male)}</b> dei maschi Aqua</span><span><b>${pretty(female)}</b> delle femmine Aqua</span></div></div></div>`;
+}
+function combined(res,sex){
+ const list=res.joint[sex];const max=showAll[sex]?list.length:Math.min(8,list.length);
+ const out=list.slice(0,max).map((x,i)=>`<tr><td class="number">${String(i+1).padStart(2,'0')}</td><td>${esc(x.label)}</td><td class="num">${pretty(x.p)}</td></tr>`).join('');
+ return `<div class="comb-table"><div class="comb-head"><h3>${sex==='male'?'♂ Figli maschi':'♀ Figlie femmine'}</h3><span>${list.length} combinazioni</span></div><table><thead><tr><th>#</th><th>Aspetto genetico di base</th><th>Prob.</th></tr></thead><tbody>${out}</tbody></table>${list.length>8?`<button class="inline-link" data-expand="${sex}">${showAll[sex]?'Mostra meno':'Mostra tutte le '+list.length+' combinazioni'}</button>`:''}</div>`;
+}
+function render(){
+ const r=E.calc(state);
+ $('goalContainer').innerHTML=goalCard(r);
+ $('combinedResults').innerHTML=combined(r,'male')+combined(r,'female');
+ const priority=['head','breast','blue','pastel','ivory'];
+ $('coreResults').innerHTML=r.modules.filter(x=>priority.includes(x.id)).map(summaryModule).join('');
+ $('extraResults').innerHTML=r.modules.filter(x=>!priority.includes(x.id)).map(summaryModule).join('');
+ $('warnings').innerHTML=r.checks.map(x=>`<li>${esc(x)}</li>`).join('');
+ $('summaryMeta').textContent=`Calcolo del ${new Intl.DateTimeFormat('it-IT',{day:'2-digit',month:'long',year:'numeric'}).format(new Date())} · probabilità per singolo nato`;
+ $('displayMale').textContent=$('maleName').value.trim()||'Maschio';
+ $('displayFemale').textContent=$('femaleName').value.trim()||'Femmina';
+}
+function resetNames(){$('maleName').value='';$('femaleName').value='';}
+function apply(s,names){
+ state=E.deepCopy(s);buildForm();
+ $('maleName').value=names?.male||'';$('femaleName').value=names?.female||'';
+ showAll={male:false,female:false};render();
+}
+function preset(name){
+ const x=E.deepCopy(E.DEFAULTS);let names={male:'Maschio',female:'Femmina'};
+ if(name==='blue'){x.male.blue='Bb';x.female.blue='Bb';names={male:'Verde / blu',female:'Verde / blu'};}
+ if(name==='ivory'){x.male.ivory='Ni';x.female.ivory='N';names={male:'Portatore Avorio',female:'Non Avorio'};}
+ if(name==='aqua'){x.aquaMode='auto';x.male.aquaAuto='Aa';x.female.aquaAuto='Aa';names={male:'Portatore Aqua',female:'Portatrice Aqua'};}
+ if(name==='pastel'){x.male.pastel='Np';x.female.pastel='N';x.male.head='Rb';x.female.head='b';names={male:'Pastello SF testa rossa',female:'Testa nera'};}
+ apply(x,names);
+ if(name==='ivory'||name==='aqua'||name==='pastel')$('advanced').open=true;
+ $('risultati').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function safeGet(){try{return JSON.parse(localStorage.getItem(STORAGE)||'[]')}catch(e){return []}}
+function safeSet(list){try{localStorage.setItem(STORAGE,JSON.stringify(list));return true}catch(e){return false}}
+function renderSaved(){
+ const items=safeGet();
+ const root=$('savedList');root.innerHTML='';
+ if(!items.length){root.textContent='Ancora nessuna coppia salvata su questo dispositivo.';return;}
+ for(const item of items){
+ const row=document.createElement('div');row.className='saved-row';
+ const label=document.createElement('span');label.textContent=`${item.male||'Maschio'} × ${item.female||'Femmina'} · ${item.date||''}`;
+ const restore=document.createElement('button');restore.className='small-btn';restore.textContent='Apri';restore.addEventListener('click',()=>{apply(item.state,item);window.scrollTo({top:0,behavior:'smooth'});toast('Coppia caricata');});
+ const remove=document.createElement('button');remove.className='small-btn danger';remove.textContent='Elimina';remove.addEventListener('click',()=>{if(confirm('Eliminare questa coppia salvata?')){safeSet(safeGet().filter(x=>x.id!==item.id));renderSaved();}});
+ row.append(label,restore,remove);root.append(row);
+ }
+}
+function toast(s){const t=$('toast');t.textContent=s;t.classList.add('visible');clearTimeout(toast.timer);toast.timer=setTimeout(()=>t.classList.remove('visible'),3800)}
+function savePair(){
+ const list=safeGet();const id='pair-'+Date.now();
+ list.unshift({id,date:new Date().toLocaleDateString('it-IT'),male:$('maleName').value.trim().slice(0,75),female:$('femaleName').value.trim().slice(0,75),state:E.deepCopy(state)});
+ if(safeSet(list.slice(0,60))){renderSaved();toast('Coppia salvata su questo dispositivo');}else toast('Salvataggio non disponibile nel browser');
+}
+function download(name,content,mime){const b=new Blob([content],{type:mime});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),1000);}
+function exportSaved(){const list=safeGet();if(!list.length){toast('Salva almeno una coppia');return;}download('gouldgen-coppie.json',JSON.stringify({version:'1.0',created:new Date().toISOString(),pairs:list},null,2),'application/json');}
+function importSaved(file){if(!file)return;const reader=new FileReader();reader.onload=()=>{try{const data=JSON.parse(reader.result);if(!Array.isArray(data.pairs))throw Error('Formato non valido');const valid=data.pairs.filter(x=>x?.state?.male?.head&&x?.state?.female?.head&&x?.state?.aquaMode&&['off','auto','sex'].includes(x.state.aquaMode)).slice(0,60);if(!valid.length)throw Error('Nessuna coppia valida');if(confirm(`Importare ${valid.length} coppie? Sostituisce quelle salvate su questo dispositivo.`)){if(safeSet(valid)){renderSaved();toast('Coppie importate');}else toast('Salvataggio locale non disponibile');}}catch(e){toast('File non valido: '+e.message)}};reader.readAsText(file);}
+function share(){
+ const pkg={state,male:$('maleName').value.trim().slice(0,75),female:$('femaleName').value.trim().slice(0,75)};
+ const payload=btoa(JSON.stringify(pkg));
+ const url=location.href.split('#')[0]+'#g='+encodeURIComponent(payload);
+ if(location.protocol==='file:'){toast('Per condividere il link su altri telefoni pubblica il sito online.');return;}
+ if(navigator.clipboard&&window.isSecureContext)navigator.clipboard.writeText(url).then(()=>toast('Link coppia copiato!')).catch(()=>prompt('Copia il link:',url));
+ else prompt('Copia il link:',url);
+}
+function restoreHash(){if(!location.hash.startsWith('#g='))return;
+ try{const v=JSON.parse(atob(decodeURIComponent(location.hash.substring(3))));const s=v.state;if(!s||!s.male||!s.female||!['off','auto','sex'].includes(s.aquaMode))return;for(const sex of ['male','female'])for(const id of Object.keys(fieldDefs)){if(!fieldDefs[id][sex]&&!fieldDefs[id].both)continue;const options=fieldDefs[id][sex]||fieldDefs[id].both;if(!options.some(o=>o[0]===s[sex][id]))return;}apply(s,v);toast('Combinazione caricata dal link');}catch(e){} }
+function testUI(){const select=document.querySelectorAll('select[data-field]');return select.length;}
+function init(){buildForm();render();renderSaved();restoreHash();
+ document.addEventListener('change',e=>{
+  const target=e.target;
+  if(target.dataset.field&&target.dataset.sex){state[target.dataset.sex][target.dataset.field]=target.value;render();}
+  if(target.id==='aquaMode'){state.aquaMode=target.value;toggleAqua();render();}
+  if(target.id==='importFile'){importSaved(target.files[0]);target.value='';}
+ });
+ document.addEventListener('click',e=>{
+  const t=e.target.closest('button');if(!t)return;
+  if(t.dataset.preset){preset(t.dataset.preset);return;}
+  if(t.dataset.expand){showAll[t.dataset.expand]=!showAll[t.dataset.expand];render();return;}
+  if(t.dataset.hint){alert(t.dataset.hint);return;}
+  if(t.id==='savePair'){savePair();return;}
+  if(t.id==='exportSaved'){exportSaved();return;}
+  if(t.id==='printResult'){window.print();return;}
+  if(t.id==='sharePair'){share();return;}
+  if(t.id==='resetAll'){if(confirm('Ripristinare tutti i campi?')){apply(E.DEFAULTS);resetNames();render();}return;}
+ });
+ for(const id of ['maleName','femaleName'])$(id).addEventListener('input',render);
+ window.GouldGenDebug={getState:()=>E.deepCopy(state),testUI};
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+
+</script>
+</body></html>
